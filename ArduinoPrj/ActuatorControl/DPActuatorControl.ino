@@ -14,7 +14,7 @@
 #ifdef UNO
 #include <SoftwareSerial.h>
 #endif
-#include <E:/MyWorkSpace/ArduinoPrj/Arduino/TecnadyneMotorController/TecnadyneMotorController.ino>
+#include <E:/MyWorkSpace/ArduinoPrj/TecnadyneMotorController/TecnadyneMotorController.ino>
 #warning Implement with manual RS485 mode???
 
 // Make this address unique for each Arduino.

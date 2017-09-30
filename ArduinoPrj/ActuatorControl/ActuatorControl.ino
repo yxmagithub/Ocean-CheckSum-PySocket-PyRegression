@@ -18,7 +18,7 @@
 #ifdef UNO
 #include <SoftwareSerial.h>
 #endif
-#include <E:/MyWorkSpace/ArduinoPrj/Arduino/TecnadyneMotorController/TecnadyneMotorController.ino>
+#include <E:/MyWorkSpace/ArduinoPrj/TecnadyneMotorController/TecnadyneMotorController.ino>
 #warning Implement with manual RS485 mode???
 
 // Make this address unique for each Arduino.
@@ -111,6 +111,7 @@ int pinB = 7;  // Connected to DT on KY-040
 // Pin output for Thruster Motor Controller
 int pinThuFR = 13;
 int pinBrake = 12;
+int analogPin = 3;
 #endif
 int pinALast = 0;
 int aVal = 0;
@@ -195,10 +196,12 @@ void actMotorOneTimeatCheckSum()
 //       Serial.println("\nbstartstopflag is");
 //       Serial.print(bstartstopflag,BIN);
 //       Serial.println();
-      uint8_t motor_adir = (dta_buf[0]==1) ? 1 : 0; //0 clockwise forward, 1 couterclockwise reverse
+      uint8_t motor_adir = (dta_buf[0]==0) ? 0 : 1; //0 clockwise forward, 1 couterclockwise reverse
       if (bstartstopflag)
       {
-        digitalWrite(pinBrake, HIGH); //HIGH is OPEN, RUNNIG
+        digitalWrite(pinBrake, HIGH); //HIGH is OPEN, RUNNIG, low is close, brake
+        analogWrite(analogPin,100); //40% pwm
+        Serial.println("\nMotor Speed is 40%");
         if(motor_adir==0)
           digitalWrite(pinThuFR, HIGH);//HIGH is OPEN, forward
         else
@@ -206,6 +209,8 @@ void actMotorOneTimeatCheckSum()
       }
       else //if(bstartstopflag == 0)
       {
+        analogWrite(analogPin, 50); //20% pwm
+        Serial.println("\nMotor speed is 20%");
         digitalWrite(pinBrake, LOW);//LOW is CLOSE, STOP
       }
       motor_address = 0x00;
@@ -265,6 +270,7 @@ void setup()
   #ifdef GEMSMOTOR
   pinMode(pinThuFR, OUTPUT);
   pinMode(pinBrake, OUTPUT);
+  pinMode(analogPin, OUTPUT);
   #endif
   boolean bCW=true;
   current_angle = 0;

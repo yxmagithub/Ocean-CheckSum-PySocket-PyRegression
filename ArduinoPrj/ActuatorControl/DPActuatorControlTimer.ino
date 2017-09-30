@@ -1,7 +1,8 @@
 /*
  * Programmer's note: I use #warning to mark the TODO list
  *
- * Receive input from Raspberry Pi and send output to Dive Plan motor controller only.
+ * Receive input from Raspberry Pi and send output to Dive Plan motor controller only
+ * it use timer to simulate the encoder due to disability of encoder hardware.
  * THIS IS DIVE PLAN
  */
 
@@ -14,7 +15,7 @@
 #ifdef UNO
 #include <SoftwareSerial.h>
 #endif
-#include <E:/MyWorkSpace/ArduinoPrj/Arduino/TecnadyneMotorController/TecnadyneMotorController.ino>
+#include <E:/MyWorkSpace/ArduinoPrj/TecnadyneMotorController/TecnadyneMotorController.ino>
 #warning Implement with manual RS485 mode???
 
 // Make this address unique for each Arduino.
