@@ -1,6 +1,9 @@
-// Implementation of Tecnadyne motor controller for Arduino.
+/*
+ * THIS IS Submodule for write the CRC, and send PWM command to Tecnadyne Motor Controller
+ * Programmer's note: I use #warning to mark the TODO list
+ * It is for Dive Plan Motor and Rudder Motor
+ */
 
-bool debug = true; // Turn on to see hex representations of binary sent to motor controller.
 #warning implmement
 
 uint8_t getBCC(uint8_t *buf, size_t len) {
