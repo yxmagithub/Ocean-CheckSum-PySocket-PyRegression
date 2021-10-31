@@ -1,5 +1,5 @@
 /*
- * THIS IS Submodule for write the CRC, and send PWM command to Tecnadyne Motor Controller
+ * THIS IS Submodule for calculate the CheckSum, and send PWM command to Tecnadyne Motor Controller
  * Programmer's note: I use #warning to mark the TODO list
  * It is for Dive Plan Motor and Rudder Motor
  */
